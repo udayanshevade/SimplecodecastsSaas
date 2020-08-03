@@ -1,0 +1,9 @@
+.contacts__form {
+  padding: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  .contacts__form {
+    padding: 1rem 2rem;
+  }
+}
