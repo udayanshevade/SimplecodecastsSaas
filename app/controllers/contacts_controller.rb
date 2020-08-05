@@ -8,9 +8,11 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to new_contact_path, notice: 'Message sent successfully' }
+        flash[:notice] = 'Message sent successfully';
+        format.html { redirect_to new_contact_path }
       else
-        format.html { redirect_to new_contact_path, notice: 'Unable to send message' }
+        flash[:alert] = 'Unable to send message';
+        format.html { redirect_to new_contact_path }
       end
     end
   end
