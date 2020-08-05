@@ -11,7 +11,7 @@
   <% flash.each do |key, value| %>
     <div class="row">
       <div class="col">
-        <% content_tag :div, value class: "alert alert-#{key}" %>
+        <% content_tag :div, value, class: "alert alert-#{key}" %>
       </div>
     </div>
   <% end %>
