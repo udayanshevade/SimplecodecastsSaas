@@ -24,12 +24,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-group">
-          <div class="navbar-nav">
-            <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary navbar-btn navbar-btn--login', method: :get %>
-          </div>
-          <div class="navbar-nav">
-            <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-success navbar-btn navbar-btn--signup', method: :get %>
-          </div>
+          <% if current_user %>
+            <div class="navbar-nav">
+              <%= link_to 'Logout', destroy_user_session_path, class: 'btn btn-secondary navbar-btn navbar-btn--logout', method: :delete %>
+            </div>
+          <% else %>
+            <div class="navbar-nav">
+              <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary navbar-btn navbar-btn--login', method: :get %>
+            </div>
+            <div class="navbar-nav">
+              <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-success navbar-btn navbar-btn--signup', method: :get %>
+            </div>
+          <% end %>
         </div>
         <div class="navbar-nav">
           <%= link_to 'About', about_path, class: 'nav-item nav-link' %>
