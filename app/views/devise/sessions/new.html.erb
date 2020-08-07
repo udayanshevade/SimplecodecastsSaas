@@ -1,26 +1,49 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron">
+        <h1>Sign up</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<%= form_with model: resource, url: session_path(resource), class: 'card container form auth__form' do |f| %>
+  <div class="row form-group">
+    <%= f.label :email, class: 'col' do %>
+      <div class="auth__form__field__label__text">Email</div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row form-group">
+    <%= f.label :password, class: 'col' do %>
+      <div class="auth__form__field__label__text">Password</div>
+      <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+    <% end %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="row form-group">
+      <div class="col">
+        <div class="form-check">
+          <%= f.label :remember_me, class: 'form-check-label' do %>
+            <%= f.check_box :remember_me, class: 'form-check-input' %>
+            <span class="auth__form__field__label__text">Remember me</span>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="row actions">
+    <div class="col">
+      <%= f.submit "Log in" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
