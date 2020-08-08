@@ -1,5 +1,26 @@
-.navbar__brand {
-  &-icon {
-    margin-right: 0.5rem;
+.navbar {
+  .navbar__brand {
+    &-icon {
+      margin-right: 0.5rem;
+    }
+  }
+
+  .navbar-group {
+    .navbar-btn--signup {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .navbar {
+    .navbar-group {
+      display: flex;
+
+      .navbar-btn--signup {
+        margin-top: 0;
+        margin-left: 0.5rem;
+      }
+    }
   }
 }
