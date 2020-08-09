@@ -1,4 +1,4 @@
-<%= form_with model: resource, url: registration_path(resource), class: 'card container form auth__form', id: 'newUserPro' do |f| %>
+<%= form_with model: resource, url: registration_path(resource), class: 'card form auth__form', id: 'newUserPro' do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <%= hidden_field_tag 'plan', params[:plan] %>
