@@ -30,24 +30,11 @@
   </div>
 
   <div class="row form-group">
-    <%= f.label :card_number, class: 'col' do %>
-      <div class="auth__form__field__label__text">Card number</div>
-      <%= f.password_field :card_number, autocomplete: "cc-number", placeholder: "xxxx-xxxx-xxxx-xxxx", class: 'form-control' %>
-    <% end %>
-  </div>
-
-  <div class="row form-group">
-    <%= f.label :card_code, class: 'col' do %>
-      <div class="auth__form__field__label__text">Card code</div>
-      <%= f.password_field :card_code, class: 'form-control' %>
-    <% end %>
-  </div>
-
-  <div class="row form-group">
-    <%= f.label :card_expiration, class: 'col' do %>
-      <div class="auth__form__field__label__text">Credit card</div>
-      <%= f.password_field :card_expiration, autocomplete: "cc-exp", placeholder: "MM/YY", class: 'form-control' %>
-    <% end %>
+    <label for="cardElementContainer" class="col">
+      <div class="auth__form__field__label__text">Credit or debit card</div>
+      <div id="cardElementContainer"></div>
+      <div id="card-errors" role="alert"></div>
+    </label>
   </div>
 
   <div class="row actions">
