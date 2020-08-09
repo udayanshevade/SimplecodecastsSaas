@@ -59,7 +59,7 @@ $(document).ready(() => {
     // Handle changes in the card values
     const initCardValChangeHandler = () => {
       // Set/clear displayed err message when the values are updated
-      const setCardValError = () => {
+      const setCardValError = e => {
         const cardErrContainer = getCardErrEl();
         if (e.error) {
           cardErrContainer.textContent = e.error.message;
