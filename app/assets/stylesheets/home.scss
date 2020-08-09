@@ -1,0 +1,12 @@
+.membership {
+  &-card {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    min-height: 250px;
+    justify-content: space-around;
+  }
+
+  &-link {
+    margin: auto;
+  }
+}
