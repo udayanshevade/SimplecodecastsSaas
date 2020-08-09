@@ -69,7 +69,7 @@ $(document).ready(() => {
       };
 
       cardEl.on('change', e => {
-        setCardValError();
+        setCardValError(e);
       });
     };
 
