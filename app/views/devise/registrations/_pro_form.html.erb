@@ -1,5 +1,7 @@
-<%= form_with model: resource, url: registration_path(resource), class: 'card container form auth__form' do |f| %>
+<%= form_with model: resource, url: registration_path(resource), class: 'card container form auth__form', id: 'newUserPro' do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+
+  <%= hidden_field_tag 'plan', params[:plan] %>
 
   <div class="row form-group">
     <%= f.label :email, class: 'col' do %>
@@ -50,7 +52,7 @@
 
   <div class="row actions">
     <div class="col">
-      <%= f.submit "Sign up", class: 'btn btn-success auth__form__submit-btn' %>
+      <%= f.submit "Sign up", class: 'btn btn-success auth__form__submit-btn', id: 'proUserBasicSubmit' %>
     </div>
   </div>
   <div class="row">
