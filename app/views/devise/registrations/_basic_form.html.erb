@@ -1,0 +1,42 @@
+<%= form_with model: resource, url: registration_path(resource), class: 'card container form auth__form', id: 'newUserBasic' do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <%= hidden_field_tag 'plan', params[:plan] %>
+
+  <div class="row form-group">
+    <%= f.label :email, class: 'col' do %>
+      <div class="auth__form__field__label__text">Email</div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    <% end %>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :password, class: 'col' do %>
+      <div class="auth__form__field__label__text">Password</div>
+      <div class="auth__form__field__hint">
+        <% if @minimum_password_length %>
+          <span class="auth__form__field__hint__text">(<%= @minimum_password_length %> characters minimum)</span>
+        <% end %>
+      </div>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+    <% end %>
+  </div>
+
+  <div class="row form-group">
+    <%= f.label :password_confirmation, class: 'col' do %>
+      <div class="auth__form__field__label__text">Confirm password</div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+    <% end %>
+  </div>
+
+  <div class="row actions">
+    <div class="col">
+      <%= f.submit "Sign up", class: 'btn btn-success auth__form__submit-btn', id: 'newUserBasicSubmit' %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+<% end %>

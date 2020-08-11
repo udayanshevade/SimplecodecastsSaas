@@ -8,6 +8,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://js.stripe.com/v3/' %>
+    <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -31,9 +33,6 @@
           <% else %>
             <div class="navbar-nav">
               <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary navbar-btn navbar-btn--login', method: :get %>
-            </div>
-            <div class="navbar-nav">
-              <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-success navbar-btn navbar-btn--signup', method: :get %>
             </div>
           <% end %>
         </div>

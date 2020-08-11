@@ -6,6 +6,8 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/brands';
 
 @import 'bootstrap/scss/bootstrap';
+
 @import './custom';
+@import './pages';
 @import './contacts';
-@import './authentication.scss';
+@import './authentication';
