@@ -1,16 +1,14 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <div class="jumbotron">
-        <div class="text-center">
-          <% if params[:plan] == '1' %>
-            <h1>Sign up free</h1>
-            <p>Sign up for free and get basic access to the community.</p>
-          <% else %>
-            <h1>Sign up pro</h1>
-            <p>Sign up for the pro account for $10/month and get access to contact info!</p>
-          <% end %>
-        </div>
+<div class="row">
+  <div class="col">
+    <div class="jumbotron">
+      <div class="text-center">
+        <% if params[:plan] == '1' %>
+          <h1>Basic account</h1>
+          <p>Sign up for free and get basic access to the community.</p>
+        <% else %>
+          <h1>Pro account</h1>
+          <p>Sign up for the pro account for $10/month and get access to contact info!</p>
+        <% end %>
       </div>
     </div>
   </div>

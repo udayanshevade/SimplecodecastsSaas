@@ -24,6 +24,13 @@ $(document).ready(() => {
     formSubmit.prop('disabled', shouldBeDisabled);
   };
 
+  // Queries the container for displaying card errors
+  const getCardErrEl = () => {
+    const cardErrorsId = 'card-errors';
+    const cardErrContainer = $(`#${cardErrorsId}`);
+    return cardErrContainer;
+  };
+
   // Access the stripe public key
   const getStripePublicKey = () => {
     const metaId = 'meta[name="stripe-key"]';
@@ -49,17 +56,10 @@ $(document).ready(() => {
       cardEl.mount(`#${cardElementContainerId}`);
     };
 
-    // Queries the container for displaying card errors
-    const getCardErrEl = () => {
-      const cardErrorsId = 'card-errors';
-      const cardErrContainer = $(`#${cardErrorsId}`);
-      return cardErrContainer;
-    };
-
     // Handle changes in the card values
     const initCardValChangeHandler = () => {
       // Set/clear displayed err message when the values are updated
-      const setCardValError = () => {
+      const setCardValError = e => {
         const cardErrContainer = getCardErrEl();
         if (e.error) {
           cardErrContainer.textContent = e.error.message;
@@ -69,7 +69,7 @@ $(document).ready(() => {
       };
 
       cardEl.on('change', e => {
-        setCardValError();
+        setCardValError(e);
       });
     };
 
@@ -101,14 +101,16 @@ $(document).ready(() => {
 
       if (!cardEl) return; // TODO: handle uninitialized card element
 
-      stripe.createToken(cardEl).then(res => {
-        if (res.error) {
-          const cardErrContainer = getCardErrEl();
-          cardErrContainer.textContent = res.error.message;
-        } else {
-          stripeTokenHandler(res.token);
-        }
-      });
+      stripe
+        .createToken(cardEl)
+        .then(res => {
+          if (res.error) {
+            const cardErrContainer = getCardErrEl();
+            cardErrContainer.textContent = res.error.message;
+          } else {
+            stripeTokenHandler(res.token);
+          }
+        });
     };
     const form = getForm();
     form.submit(handleFormSubmit);

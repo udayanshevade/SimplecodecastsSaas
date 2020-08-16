@@ -1,5 +1,25 @@
 .contacts__form {
   padding: 1rem;
+
+  .form-control {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 10px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+
+    &.contacts__form-new__field__label__input--comments {
+      height: initial;
+    }
+
+    &:focus {
+      box-shadow: 0 1px 3px 0 #cfd7df;
+    }
+  }
 }
 
 @include media-breakpoint-up(sm) {

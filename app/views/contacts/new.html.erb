@@ -1,55 +1,53 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <div class="jumbotron">
-        <h1>Contact</h1>
-      </div>
+<div class="row">
+  <div class="col">
+    <div class="jumbotron">
+      <h1>Contact</h1>
     </div>
   </div>
 </div>
-<div class="container-fluid">
-  <% flash.each do |key, value| %>
+<% flash.each do |key, value| %>
+  <div class="row">
+    <div class="col">
+      <%= content_tag :div, value, class: "alert alert-#{key}" %>
+    </div>
+  </div>
+<% end %>
+<%= form_with model: @contact, class: 'row form contacts__form' do |f| %>
+  <div class="col col-md-6 offset-md-3">
+    <% if @contact.errors.any? %>
+      <div id="error_explanation" class="row">
+        <h2 class="col"><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+        <ul class="col">
+          <% @contact.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row form-group">
+      <%= f.label :name, class: 'col contacts__form-new__field__label' do %>
+        <div class="contacts__form-new__field__label__text">Name</div>
+        <%= f.text_field :name, class: 'form-control contacts__form-new__field__label__input', placeholder: 'Jane Doe' %>
+      <% end %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :email, class: 'col contacts__form-new__field__label' do %>
+        <div class="contacts__form-new__field__label__text">Email</div>
+        <%= f.email_field :email, class: 'form-control contacts__form-new__field__label__input', placeholder: 'janedoe@gmail.com' %>
+      <% end %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :comments, class: 'col contacts__form-new__field__label' do %>
+        <div class="contacts__form-new__field__label__text">Comments</div>
+        <%= f.text_area :comments, class: 'form-control contacts__form-new__field__label__input contacts__form-new__field__label__input--comments', placeholder: 'Hello', rows: '3' %>
+      <% end %>
+    </div>
+
     <div class="row">
       <div class="col">
-        <%= content_tag :div, value, class: "alert alert-#{key}" %>
+        <%= f.submit 'Submit', class: 'button button-default' %>
       </div>
-    </div>
-  <% end %>
-</div>
-<%= form_with model: @contact, class: 'card container form contacts__form' do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation" class="row">
-      <h2 class="col"><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
-      <ul class="col">
-        <% @contact.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="row form-group">
-    <%= f.label :name, class: 'col contacts__form-new__field__label' do %>
-      <div class="contacts__form-new__field__label__text">Name</div>
-      <%= f.text_field :name, class: 'form-control contacts__form-new__field__label__input', placeholder: 'Jane Doe' %>
-    <% end %>
-  </div>
-  <div class="row form-group">
-    <%= f.label :email, class: 'col contacts__form-new__field__label' do %>
-      <div class="contacts__form-new__field__label__text">Email</div>
-      <%= f.email_field :email, class: 'form-control contacts__form-new__field__label__input', placeholder: 'janedoe@gmail.com' %>
-    <% end %>
-  </div>
-  <div class="row form-group">
-    <%= f.label :comments, class: 'col contacts__form-new__field__label' do %>
-      <div class="contacts__form-new__field__label__text">Comments</div>
-      <%= f.text_area :comments, class: 'form-control contacts__form-new__field__label__input', placeholder: 'Hello', rows: '3' %>
-    <% end %>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <%= f.submit 'Submit', class: 'button button-default' %>
     </div>
   </div>
 <% end %>
